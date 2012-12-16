@@ -1,3 +1,14 @@
+reversed = function(x) {
+  var i, l, result;
+  result = [];
+  l = x.length;
+  for (i = 0; i < l; i++) {
+    result.append(x[((l - i) - 1)]);
+  }
+
+  return result;
+};
+
 list = function(x) {
   var item, result;
   result = [];
@@ -29,6 +40,14 @@ dict = function(x) {
 };
 
 _$pyva_int = function(x) {
+  if ((x.constructor === Number.prototype.constructor)) {
+    if ((x >= 0)) {
+      return Math.floor(x);
+    }
+
+    return Math.ceil(x);
+  }
+
   return parseInt(x);
 };
 
@@ -77,8 +96,27 @@ Array.prototype.extend = (function(items) {
 
 });
 Array.prototype.index = Array.prototype.indexOf;
+String.prototype.index = String.prototype.indexOf;
 String.prototype.join = (function(iterable) {
   return iterable.join(this);
+});
+String.prototype.lower = String.prototype.toLowerCase;
+String.prototype.upper = String.prototype.toUpperCase;
+String.prototype.strip = (function() {
+  return this.replace(/^\s\s*/, "").replace(/\s\s*$/, "");
+});
+String.prototype.find = (function(item) {
+  return this.search(item);
+});
+String.prototype.isemail = (function() {
+  var emailReg;
+  emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
+  if ((!emailReg.test(this))) {
+    return false;
+  } else {
+    return true;
+  }
+
 });
 isinstance = function(item, cls) {
   var cls_item, isnumber;
@@ -115,7 +153,7 @@ isinstance = function(item, cls) {
 
 _$pyva_iter = function(iter_object) {
   var key_list;
-  if (((iter_object.callee && (typeof iter_object['length'] != "undefined")) || isinstance(iter_object, list))) {
+  if (((iter_object.callee && (typeof iter_object["length"] != "undefined")) || isinstance(iter_object, list))) {
     return iter_object;
   }
 

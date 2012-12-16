@@ -1,0 +1,19 @@
+git clone https://github.com/regimantas/nova-pyvascript.git
+
+cd nova-pyvascript
+
+sudo apt-get install python-setuptools
+
+cd pymeta
+
+python setup.py install
+
+cd ..
+
+cd pyvascript
+
+python setup.py install
+
+cd ..
+
+compile-pyva.py

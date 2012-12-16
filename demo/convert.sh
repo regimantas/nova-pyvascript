@@ -1,0 +1,1 @@
+compile-pyva.py *.pyva

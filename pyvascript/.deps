@@ -1,5 +1,0 @@
-[general]
-dependencies = pymeta
-
-[links]
-pyvascript = pyvascript/pyvascript
